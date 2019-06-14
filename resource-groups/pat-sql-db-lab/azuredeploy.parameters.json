@@ -2,66 +2,72 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "dtap": {"value": "development"},
-    "ring": {"value": 100},
-    "location": { "value": "West Europe" },
+    "dtap": {
+      "value": "development"
+    },
+    "ring": {
+      "value": 100
+    },
+    "location": {
+      "value": "West Europe"
+    },
     "administratorLogin": {
-      "value": "pladmin"
-  },
-  "administratorLoginPassword": {
-      "value": null
-  },
-  "collation": {
+      "value": "#/subscriptions/[subscriptionId]/resourceGroups/pat-core/providers/Microsoft.KeyVault/vaults/pat-core-key-vault#Secrets#pat-sql-db-lab--sql-admin-login.SecretValueText#"
+    },
+    "administratorLoginPassword": {
+      "value": "#/subscriptions/[subscriptionId]/resourceGroups/pat-core/providers/Microsoft.KeyVault/vaults/pat-core-key-vault#Secrets#pat-sql-db-lab--sql-admin-login-password.SecretValue#"
+    },
+    "collation": {
       "value": "SQL_Latin1_General_CP1_CI_AS"
-  },
-  "databaseName": {
-      "value": "MyDb"
-  },
-  "tier": {
-      "value": "GeneralPurpose"
-  },
-  "skuName": {
-      "value": "GP_Gen5_2"
-  },
-  "maxSizeBytes": {
-      "value": 34359738368
-  },
-  "sampleName": {
+    },
+    "databaseName": {
       "value": "AdventureWorksLT"
-  },
-  "serverName": {
-      "value": "pat-mydbserver"
-  },
-  "licenseType": {
+    },
+    "tier": {
+      "value": "GeneralPurpose"
+    },
+    "skuName": {
+      "value": "GP_Gen5_2"
+    },
+    "maxSizeBytes": {
+      "value": 34359738368
+    },
+    "sampleName": {
+      "value": "AdventureWorksLT"
+    },
+    "serverName": {
+      "value": "pat-db-server-lab"
+    },
+    "licenseType": {
       "value": "LicenseIncluded"
-  },
-  "readScaleOut": {
+    },
+    "readScaleOut": {
       "value": "Disabled"
-  },
-  "zoneRedundant": {
+    },
+    "zoneRedundant": {
       "value": false
-  },
-  "numberOfReplicas": {
+    },
+    "numberOfReplicas": {
       "value": 0
-  },
-  "enableADS": {
+    },
+    "enableADS": {
       "value": true
-  },
-  "allowAzureIps": {
+    },
+    "allowAzureIps": {
       "value": true
-  },
-  "databaseTags": {
+    },
+    "databaseTags": {
       "value": {
-          "dtap": "development"
+        "dtap": "development"
       }
-  },
-  "serverTags": {
+    },
+    "serverTags": {
       "value": {
-          "dtap": "development"
+        "dtap": "development"
       }
-  },
-  "enableVA": {
+    },
+    "enableVA": {
       "value": true
-  }
+    }
   }
 }
