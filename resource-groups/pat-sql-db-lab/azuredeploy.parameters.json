@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dtap": {"value": "development"},
+    "ring": {"value": 100},
+    "location": { "value": "West Europe" },
+    "administratorLogin": {
+      "value": "pladmin"
+  },
+  "administratorLoginPassword": {
+      "value": null
+  },
+  "collation": {
+      "value": "SQL_Latin1_General_CP1_CI_AS"
+  },
+  "databaseName": {
+      "value": "MyDb"
+  },
+  "tier": {
+      "value": "GeneralPurpose"
+  },
+  "skuName": {
+      "value": "GP_Gen5_2"
+  },
+  "maxSizeBytes": {
+      "value": 34359738368
+  },
+  "sampleName": {
+      "value": "AdventureWorksLT"
+  },
+  "serverName": {
+      "value": "pat-mydbserver"
+  },
+  "licenseType": {
+      "value": "LicenseIncluded"
+  },
+  "readScaleOut": {
+      "value": "Disabled"
+  },
+  "zoneRedundant": {
+      "value": false
+  },
+  "numberOfReplicas": {
+      "value": 0
+  },
+  "enableADS": {
+      "value": true
+  },
+  "allowAzureIps": {
+      "value": true
+  },
+  "databaseTags": {
+      "value": {
+          "dtap": "development"
+      }
+  },
+  "serverTags": {
+      "value": {
+          "dtap": "development"
+      }
+  },
+  "enableVA": {
+      "value": true
+  }
+  }
+}
