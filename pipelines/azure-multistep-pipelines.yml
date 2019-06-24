@@ -2,16 +2,3 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
 - master
-
-stages:
-- stage: "pat-sql-db-lab_build"
-    jobs:
-    - job: "Job1"
-        workspace:
-            clean: "outputs"
-        steps:
-        - script: "echo Testing on Windows!"
-
-
-
-        
