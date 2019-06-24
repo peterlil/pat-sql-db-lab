@@ -10,6 +10,8 @@ stages:
     - job: Job1
         workspace:
             clean: outputs
+        steps:
+        - script: echo Testing on Windows!
 
 
 
