@@ -32,8 +32,3 @@ stages:
           SourceFolder: '$(Build.SourcesDirectory)\ps'
           Contents: '**'
           TargetFolder: '$(Build.ArtifactStagingDirectory)\ps'
-    - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
