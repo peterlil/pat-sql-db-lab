@@ -4,3 +4,8 @@ trigger:
 - master
 
 stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo Testing on Windows!
