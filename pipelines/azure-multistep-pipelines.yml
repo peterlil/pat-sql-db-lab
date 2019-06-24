@@ -4,14 +4,13 @@ trigger:
 - master
 
 stages:
-- stage: pat-sql-db-lab_build
-#    displayName: pat-sql-db-lab Build
+- stage: "pat-sql-db-lab_build"
     jobs:
-    - job: Job1
+    - job: "Job1"
         workspace:
-            clean: outputs
+            clean: "outputs"
         steps:
-        - script: echo Testing on Windows!
+        - script: "echo Testing on Windows!"
 
 
 
