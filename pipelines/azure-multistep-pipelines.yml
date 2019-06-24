@@ -27,3 +27,13 @@ stages:
         sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
         contents: '**'
         targetFolder: '$(Build.ArtifactStagingDirectory)\resource-groups'
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)\ps'
+        contents: '**'
+        targetFolder: '$(Build.ArtifactStagingDirectory)\ps'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+        publishLocation: 'Container'
