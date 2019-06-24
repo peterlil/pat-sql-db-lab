@@ -24,6 +24,6 @@ stages:
         preferredAzurePowerShellVersion: 6.7.0
     - task: CopyFiles@2
       inputs:
-        #SourceFolder: '$(Build.SourcesDirectory)\resource-groups'
+        sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
         contents: '**'
         targetFolder: '$(Build.ArtifactStagingDirectory)\resource-groups'
