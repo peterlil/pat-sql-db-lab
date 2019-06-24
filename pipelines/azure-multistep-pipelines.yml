@@ -5,7 +5,7 @@ trigger:
 
 stages:
 - stage: pat-sql-db-lab_build
-    displayName: pat-sql-db-lab Build
+#    displayName: pat-sql-db-lab Build
     jobs:
     - job: Job1
         displayName: Job 1
