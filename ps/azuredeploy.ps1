@@ -85,6 +85,7 @@ function deployTemplate($fullPath, $SourceVersion) {
      # Prepare the TemplateParameterObject
      $dynamicParams = @{ }
     $params.parameters | Get-ObjectMembers | ForEach-Object {
+        #Write-Verbose "Adding $($_.Key):$($_.value) - $($_.value.GetType())"
         $dynamicParams.Add($_.Key, $_.value)
     }
 
@@ -100,7 +101,7 @@ function deployTemplate($fullPath, $SourceVersion) {
     }
     Write-Verbose $jsonTemplateFileName
     Write-Verbose $jsonParameterFullFileName
-
+    
     $ErrorMessages = @()
     if ($WhatIf -eq $true) {
         $ErrorMessages = Format-ValidationOutput ( Test-AzureRmResourceGroupDeployment `

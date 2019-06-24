@@ -56,16 +56,6 @@
     "allowAzureIps": {
       "value": true
     },
-    "databaseTags": {
-      "value": {
-        "dtap": "development"
-      }
-    },
-    "serverTags": {
-      "value": {
-        "dtap": "development"
-      }
-    },
     "enableVA": {
       "value": true
     }

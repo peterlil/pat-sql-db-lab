@@ -77,14 +77,6 @@
             "type": "bool",
             "defaultValue": true
         },
-        "databaseTags": {
-            "type": "object",
-            "defaultValue": {}
-        },
-        "serverTags": {
-            "type": "object",
-            "defaultValue": {}
-        },
         "enableVA": {
             "type": "bool",
             "defaultValue": false
@@ -103,6 +95,9 @@
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageName')]",
             "location": "[parameters('location')]",
+            "tags": {
+                "dtap": "[parameters('dtap')]"
+            },
             "sku": {
                 "name": "Standard_LRS"
             },
@@ -111,8 +106,11 @@
         },
         {
             "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Sql/servers",
             "location": "[parameters('location')]",
-            "tags": "[parameters('serverTags')]",
+            "tags": {
+                "dtap": "[parameters('dtap')]"
+            },
             "name": "[parameters('serverName')]",
             "properties": {
                 "administratorLogin": "[parameters('administratorLogin')]",
@@ -126,7 +124,9 @@
                         "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
                     ],
                     "location": "[parameters('location')]",
-                    "tags": "[parameters('databaseTags')]",
+                    "tags": {
+                        "dtap": "[parameters('dtap')]"
+                    },
                     "name": "[parameters('databaseName')]",
                     "properties": {
                         "collation": "[parameters('collation')]",
@@ -195,8 +195,7 @@
                         "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/securityAlertPolicies/Default')]"
                     ]
                 }
-            ],
-            "type": "Microsoft.Sql/servers"
+            ]
         }
     ],
     "outputs": {}
