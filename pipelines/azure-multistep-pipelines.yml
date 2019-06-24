@@ -2,3 +2,5 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
 - master
+
+stages:
