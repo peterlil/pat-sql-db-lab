@@ -27,8 +27,3 @@ stages:
           SourceFolder: '$(Build.SourcesDirectory)\resource-groups'
           Contents: '**'
           TargetFolder: '$(Build.ArtifactStagingDirectory)\resource-groups'
-    - task: CopyFiles@2
-        inputs:
-          SourceFolder: '$(Build.SourcesDirectory)\ps'
-          Contents: '**'
-          TargetFolder: '$(Build.ArtifactStagingDirectory)\ps'
