@@ -11,8 +11,14 @@ stages:
       clean: outputs
     
     pool:
-        name: Hosted VS2017
-        demands: azureps
+      name: Hosted VS2017
+      demands: azureps
 
     steps:
-    - script: echo Testing on Windows!
+    - task: AzurePowerShell@3
+      displayName: 'Azure PowerShell script: azuredeploy.ps1'
+      inputs:
+      azureSubscription: 'PAT Production'
+      ScriptPath: ps/azuredeploy.ps1
+      ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
+      preferredAzurePowerShellVersion: 6.7.0
