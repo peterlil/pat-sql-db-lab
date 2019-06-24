@@ -4,7 +4,7 @@ trigger:
 - master
 
 stages:
-- stage: Build
+- stage: pat-sql-db-lab_build
   jobs:
   - job: BuildJob
     steps:
