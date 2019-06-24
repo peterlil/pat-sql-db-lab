@@ -18,7 +18,7 @@ stages:
     - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: azuredeploy.ps1'
       inputs:
-      azureSubscription: 'PAT Production'
-      ScriptPath: ps/azuredeploy.ps1
-      ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
-      preferredAzurePowerShellVersion: 6.7.0
+        azureSubscription: 'PAT Production'
+        ScriptPath: ps/azuredeploy.ps1
+        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
+        preferredAzurePowerShellVersion: 6.7.0
