@@ -48,7 +48,7 @@ stages:
     - task: DownloadBuildArtifacts@0
       inputs:
         buildType: 'specific'
-        project: 'pat-sql-db-lab'
+        project: 'Personal Azure Training'
         pipeline: 'peterlil.pat-sql-db-lab'
         buildVersionToDownload: 'latest'
         downloadType: 'single'
