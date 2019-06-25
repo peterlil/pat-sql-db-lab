@@ -4,38 +4,38 @@ trigger:
 - master
 
 stages:
-#- stage: Build
-#  jobs:
-#  - job: BuildJob
-#    
-#    pool:
-#      name: Hosted VS2017
-#      demands: azureps
-#
-#    steps:
-#    - task: AzurePowerShell@3
-#      displayName: 'Azure PowerShell script: azuredeploy.ps1'
-#      inputs:
-#        azureSubscription: 'PAT Production'
-#        ScriptPath: ps/azuredeploy.ps1
-#        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
-#        preferredAzurePowerShellVersion: 6.7.0
-#    - task: CopyFiles@2
-#      inputs:
-#        sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
-#        contents: '**'
-#        targetFolder: '$(Build.ArtifactStagingDirectory)\resource-groups'
-#    - task: CopyFiles@2
-#      inputs:
-#        sourceFolder: '$(Build.SourcesDirectory)\ps'
-#        contents: '**'
-#        targetFolder: '$(Build.ArtifactStagingDirectory)\ps'
-#    - task: PublishBuildArtifacts@1
-#      inputs:
-#        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#        artifactName: 'drop'
-#        publishLocation: 'Container'
-#
+- stage: Build
+  jobs:
+  - job: BuildJob
+    
+    pool:
+      name: Hosted VS2017
+      demands: azureps
+
+    steps:
+    - task: AzurePowerShell@3
+      displayName: 'Azure PowerShell script: azuredeploy.ps1'
+      inputs:
+        azureSubscription: 'PAT Production'
+        ScriptPath: ps/azuredeploy.ps1
+        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
+        preferredAzurePowerShellVersion: 6.7.0
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
+        contents: '**'
+        targetFolder: '$(Build.ArtifactStagingDirectory)\resource-groups'
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)\ps'
+        contents: '**'
+        targetFolder: '$(Build.ArtifactStagingDirectory)\ps'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+
 - stage: Deploy
   jobs:
   - job: DeployJob
