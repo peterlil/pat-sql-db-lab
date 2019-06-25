@@ -16,13 +16,13 @@ stages:
       demands: azureps
 
     steps:
-#    - task: AzurePowerShell@3
-#      displayName: 'Azure PowerShell script: azuredeploy.ps1'
-#      inputs:
-#        azureSubscription: 'PAT Production'
-#        ScriptPath: ps/azuredeploy.ps1
-#        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
-#        preferredAzurePowerShellVersion: 6.7.0
+    - task: AzurePowerShell@3
+      displayName: 'Azure PowerShell script: azuredeploy.ps1'
+      inputs:
+        azureSubscription: 'PAT Production'
+        ScriptPath: ps/azuredeploy.ps1
+        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
+        preferredAzurePowerShellVersion: 6.7.0
     - task: CopyFiles@2
       inputs:
         sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
@@ -63,6 +63,13 @@ stages:
         artifactName: 'drop'
         itemPattern: '**'
         downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
+
+   - task: AzurePowerShell@4
+     inputs:
+       azureSubscription: 'PAT Production'
+       ScriptType: 'InlineScript'
+       Inline: 'Get-Location'
+       azurePowerShellVersion: 'LatestVersion'
 #
 #    - task: AzurePowerShell@4
 #      displayName: 'Azure PowerShell script: inline test'
