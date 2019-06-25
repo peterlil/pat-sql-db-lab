@@ -39,35 +39,3 @@ stages:
       inputs:
         path: '$(Build.ArtifactStagingDirectory)'
         artifact: 'drop-preview'
-
-- stage: Deploy
-  jobs:
-  - job: DeployJob
-
-    pool:
-      name: Hosted VS2017
-      demands: azureps
-
-    steps:
-    - task: DownloadPipelineArtifact@2
-      inputs:
-      artifact: 'drop-preview'
-      
-#    - task: DownloadBuildArtifacts@0
-#      inputs:
-#        buildType: 'specific'
-#        project: 'Personal Azure Training'
-#        pipeline: 'peterlil.pat-sql-db-lab'
-#        buildVersionToDownload: 'latest'
-#        downloadType: 'single'
-#        artifactName: 'drop'
-#        itemPattern: 'drop/**'
-#        downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
-#        
-#    - task: AzurePowerShell@3
-#      displayName: 'Azure PowerShell script: azuredeploy.ps1'
-#      inputs:
-#        azureSubscription: 'PAT Production'
-#        ScriptPath: '$(System.DefaultWorkingDirectory)/_pat-sql-db-lab/drop/ps/azuredeploy.ps1'
-#        ScriptArguments: '-dtap development -sourcePath $(System.DefaultWorkingDirectory)\_pat-sql-db-lab\drop -SourceVersion $(Build.SourceVersion) -WhatIf $false'
-#        preferredAzurePowerShellVersion: 6.7.0
