@@ -68,7 +68,7 @@ stages:
       inputs:
         azureSubscription: 'PAT Production'
         scriptType: 'InlineScript'
-        inline: 'Get-ChildItem *.ps1,*.json -Recurse'
+        inline: 'Get-ChildItem -Directory D:\ -Include *.ps1,*.json -Recurse'
         azurePowerShellVersion: 'LatestVersion'
 #
 #    - task: AzurePowerShell@4
