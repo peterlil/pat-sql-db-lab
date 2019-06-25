@@ -61,14 +61,14 @@ stages:
         itemPattern: '**'
         downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
 
-    - task: AzurePowerShell@4
+    - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: inline test'
       inputs:
         azureSubscription: 'PAT Production'
         inline: 'Set-Location $(System.DefaultWorkingDirectory); Get-ChildItem *.ps1,*.json -Recurse'
         preferredAzurePowerShellVersion: 6.7.0
 
-    - task: AzurePowerShell@4
+    - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: azuredeploy.ps1'
       inputs:
         azureSubscription: 'PAT Production'
