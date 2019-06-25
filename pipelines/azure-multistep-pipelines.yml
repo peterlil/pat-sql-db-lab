@@ -52,3 +52,15 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifact: 'drop-preview'
+
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'specific'
+        project: 'Personal Azure Training'
+        pipeline: 'peterlil.pat-sql-db-lab'
+        buildVersionToDownload: 'latest'
+        allowPartiallySucceededBuilds: false
+        downloadType: 'single'
+        artifactName: 'drop'
+        itemPattern: '**'
+        downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
