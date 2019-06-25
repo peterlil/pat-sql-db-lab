@@ -45,6 +45,11 @@ stages:
       demands: azureps
 
     steps:
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadPath: '$(System.ArtifactsDirectory)'
+        
     - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: azuredeploy.ps1'
       inputs:
