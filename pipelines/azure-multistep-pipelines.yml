@@ -69,7 +69,7 @@ stages:
       inputs:
         azureSubscription: 'PAT Production'
         inline: 'Get-Location'
-        preferredAzurePowerShellVersion: 2.3.2
+        preferredAzurePowerShellVersion: 2.2.0
 
     - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: azuredeploy.ps1'
