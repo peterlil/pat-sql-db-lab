@@ -65,7 +65,7 @@ stages:
       displayName: 'Azure PowerShell script: inline test'
       inputs:
         azureSubscription: 'PAT Production'
-        inline: 'Set-Location $(System.DefaultWorkingDirectory); Get-ChildItem *.ps1,*.json -Recurse'
+        inline: 'Get-Location'
         preferredAzurePowerShellVersion: 6.7.0
 
     - task: AzurePowerShell@3
