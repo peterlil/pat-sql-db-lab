@@ -62,7 +62,7 @@ stages:
         downloadType: 'single'
         artifactName: 'drop'
         itemPattern: '**'
-        downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
+        downloadPath: '$(Build.ArtifactStagingDirectory)/_pat-sql_db_lab'
 
     - task: AzurePowerShell@4
       inputs:
