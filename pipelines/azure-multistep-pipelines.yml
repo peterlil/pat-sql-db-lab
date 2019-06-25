@@ -63,14 +63,14 @@ stages:
         artifactName: 'drop'
         itemPattern: '**'
         downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
-
-    - task: AzurePowerShell@4
-      displayName: 'Azure PowerShell script: inline test'
-      inputs:
-        azureSubscription: 'PAT Production'
-        inline: | 
-          Get-Location
-        preferredAzurePowerShellVersion: 1.0.0
+#
+#    - task: AzurePowerShell@4
+#      displayName: 'Azure PowerShell script: inline test'
+#      inputs:
+#        azureSubscription: 'PAT Production'
+#        inline: | 
+#          Get-Location
+#        preferredAzurePowerShellVersion: 1.0.0
 
     - task: AzurePowerShell@3
       displayName: 'Azure PowerShell script: azuredeploy.ps1'
