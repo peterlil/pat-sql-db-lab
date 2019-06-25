@@ -3,6 +3,9 @@ name: $(Date:yyyyMMdd)$(Rev:.r)
 trigger:
 - master
 
+variables:
+  skipComponentGovernanceDetection: true
+
 stages:
 - stage: Build
   jobs:
@@ -13,13 +16,13 @@ stages:
       demands: azureps
 
     steps:
-    - task: AzurePowerShell@3
-      displayName: 'Azure PowerShell script: azuredeploy.ps1'
-      inputs:
-        azureSubscription: 'PAT Production'
-        ScriptPath: ps/azuredeploy.ps1
-        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
-        preferredAzurePowerShellVersion: 6.7.0
+#    - task: AzurePowerShell@3
+#      displayName: 'Azure PowerShell script: azuredeploy.ps1'
+#      inputs:
+#        azureSubscription: 'PAT Production'
+#        ScriptPath: ps/azuredeploy.ps1
+#        ScriptArguments: '-dtap development -sourcePath $(Build.Repository.LocalPath) -SourceVersion $(Build.BuildNumber) -WhatIf $true'
+#        preferredAzurePowerShellVersion: 6.7.0
     - task: CopyFiles@2
       inputs:
         sourceFolder: '$(Build.SourcesDirectory)\resource-groups'
