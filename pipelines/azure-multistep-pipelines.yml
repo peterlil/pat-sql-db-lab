@@ -1,7 +1,7 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
-#- master
+- master
 
 variables:
   skipComponentGovernanceDetection: true
@@ -62,13 +62,13 @@ stages:
         downloadType: 'single'
         artifactName: 'drop'
         itemPattern: '**'
-        downloadPath: '$(Build.ArtifactStagingDirectory)/_pat-sql_db_lab'
+        downloadPath: '$(System.DefaultWorkingDirectory)/_pat-sql_db_lab'
 
     - task: AzurePowerShell@4
       inputs:
         azureSubscription: 'PAT Production'
         scriptType: 'InlineScript'
-        inline: 'Get-ChildItem -Directory D:\ -Include *.ps1,*.json -Recurse'
+        inline: 'Get-ChildItem -Directory D:\ -Include *.* -Recurse'
         azurePowerShellVersion: 'LatestVersion'
 #
 #    - task: AzurePowerShell@4
