@@ -23,6 +23,39 @@ function Get-ObjectMembers {
     }
 }
 
+function Get-ArmTemplateFileName {
+    Param(
+        [Parameter(Mandatory=$True)] [string] $ParameterFilePath,
+        [Parameter(Mandatory=$True)] [string] $ParameterFileName
+    )
+
+    $fileName = $ParameterFileName.Replace("parameters.", "")
+    $pattern = "(?<=azuredeploy[\w\s-\.]*)(\.[\w\s-]+){1,1}(?=\.json)";
+
+    $re = New-Object System.Text.RegularExpressions.Regex($pattern)
+    $found = $false;
+
+    do {
+        $file = Get-Item -Path "$($ParameterFilePath)\$($fileName)" -ErrorAction SilentlyContinue
+        if ($file) {
+            $found = $true
+        } else {
+            $match = $re.Match($fileName)
+            if ($match.Success -eq $true)
+            {
+                $result = $match.Value
+                $fileName = $fileName.Replace($result, "")
+            } else {
+                Write-Error "No more file matches. Quitting"
+                return
+            }
+        }
+        
+    } while ($found -ne $true);
+
+    "$($ParameterFilePath)\$($fileName)"
+}
+
 function deployTemplate($fullPath, $SourceVersion) {
     ###############################################################################
     # Deploy a template
@@ -44,7 +77,8 @@ function deployTemplate($fullPath, $SourceVersion) {
     
     $rgName = [System.Text.RegularExpressions.Regex]::Match($fullPath, $rgNamePattern).Value
     Write-Verbose "Resource Group Name: $($rgName)"
-    $jsonTemplateFileName = $path + ($jsonParameterFileName.ToLower().Replace(".development.", ".").Replace(".dev.", ".").Replace(".test.", ".").Replace(".uat.", ".").Replace(".acc.", ".").Replace(".production.", ".").Replace(".prod.", ".").Replace(".parameters.", "."))
+
+    $jsonTemplateFileName = Get-ArmTemplateFileName -ParameterFilePath $path -ParameterFileName $jsonParameterFileName
     Write-Verbose "Template file name: $($jsonTemplateFileName)"
 
     # Load the parameter file and set parameter(s)
