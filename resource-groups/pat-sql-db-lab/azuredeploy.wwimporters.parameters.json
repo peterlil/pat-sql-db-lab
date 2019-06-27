@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dtap": {
-      "value": "development"
+      "value": "wwimporters"
     },
     "ring": {
       "value": 100
@@ -21,7 +21,7 @@
       "value": "SQL_Latin1_General_CP1_CI_AS"
     },
     "databaseName": {
-      "value": "AdventureWorksLT"
+      "value": "wwimporters"
     },
     "tier": {
       "value": "GeneralPurpose"
@@ -33,7 +33,7 @@
       "value": 34359738368
     },
     "sampleName": {
-      "value": "AdventureWorksLT"
+      "value": ""
     },
     "serverName": {
       "value": "pat-db-server-lab"
