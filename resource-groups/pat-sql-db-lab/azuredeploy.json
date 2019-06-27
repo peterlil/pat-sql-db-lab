@@ -3,13 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "dtap": {
-            "type": "string",
-            "allowedValues": [
-                "production",
-                "user acceptance test",
-                "test",
-                "development"
-            ]
+            "type": "string"
         },
         "ring": {
             "type": "int"
